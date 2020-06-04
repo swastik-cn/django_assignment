@@ -15,7 +15,7 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path
-from .views import UserAPIView,UserDetails,MentorAPIView,MentorDetails,ProjectAPIView,ProjectToUserAPI,ProjectToMentorAPI
+from .views import UserAPIView,UserDetails,MentorAPIView,MentorDetails,ProjectAPIView,ProjectToUserAPI,ProjectToMentorAPI,UserToProject,MenteesOfMentor,ProjectOfMnetor,MnetorMenteeOfPrject
 
 urlpatterns = [
     # path('user/', user_list),
@@ -25,8 +25,9 @@ urlpatterns = [
     path('mentor/<int:pk>/',MentorDetails.as_view()),
     path('project/', ProjectAPIView.as_view()),
     path('projtouser/<int:pk>/',ProjectToUserAPI.as_view()),
-    path('projecttomentor/<int:pk>/',ProjectToMentorAPI.as_view())
-
-
-
+    path('projecttomentor/<int:pk>/',ProjectToMentorAPI.as_view()),
+    path('usertoproject/<int:pk>/',UserToProject.as_view()),
+    path('menteesofmentor/<int:pk>/',MenteesOfMentor.as_view()),
+    path('projectofmnetor/<int:pk>/',ProjectOfMnetor.as_view()),
+    path('mnetormenteeofprject/<int:pk>/',MnetorMenteeOfPrject.as_view())
 ]

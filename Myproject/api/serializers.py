@@ -13,4 +13,8 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields= '__all__'
+class ProjectSerializer1(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields= ['mentor','mentees']
 
