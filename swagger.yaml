@@ -1,0 +1,372 @@
+swagger: '2.0'
+info:
+  title: Snippets API
+  description: Test description
+  termsOfService: https://www.google.com/policies/terms/
+  contact:
+    email: contact@snippets.local
+  license:
+    name: BSD License
+  version: v1
+host: 127.0.0.1:8001
+schemes:
+  - http
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /mentor/:
+    get:
+      operationId: mentor_list
+      description: gets all the mentors
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - mentor
+    post:
+      operationId: mentor_create
+      description: creates a new mentor
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Mentor'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Mentor'
+      tags:
+        - mentor
+    parameters: []
+  /mentor/{id}/:
+    get:
+      operationId: mentor_read
+      description: insert id of mentor to get details of the mentor
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - mentor
+    put:
+      operationId: mentor_update
+      description: modifies the mentor with given id
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Mentor'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Mentor'
+      tags:
+        - mentor
+    delete:
+      operationId: mentor_delete
+      description: deletes a mentor with given id
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - mentor
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /mentor/{id}/mentees:
+    get:
+      operationId: mentor_mentees_list
+      description: |-
+        Gets all the mentees under a mentor 
+        Insert id if mentor in id
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - mentor
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /mnetor/{id}/project:
+    get:
+      operationId: mnetor_project_list
+      description: |-
+        Gets all the projects under a mentor 
+        Insert id if mentor in id
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - mnetor
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /prject/{id}/mentor/mentees:
+    get:
+      operationId: prject_mentor_mentees_list
+      description: |-
+        Gets all the mentees and mentor  of project
+        Insert project id in id
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - prject
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /project/:
+    get:
+      operationId: project_list
+      description: gets all the projects
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - project
+    post:
+      operationId: project_create
+      description: adds a new project
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ProjectSerializer2'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProjectSerializer2'
+      tags:
+        - project
+    parameters: []
+  /project/{id}/mentor:
+    patch:
+      operationId: project_mentor_partial_update
+      description: |-
+        assignes  mentor to the project 
+        insert project id in id 
+        and id of mentor in the JSON
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ProjectSerializer3'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProjectSerializer3'
+      tags:
+        - project
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /project/{id}/user:
+    patch:
+      operationId: project_user_partial_update
+      description: |-
+        assignes the list of mentees to the project 
+        insert project id in id 
+        and ids of mentees in the JSON list
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ProjectSerializer4'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProjectSerializer4'
+      tags:
+        - project
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /user/:
+    get:
+      operationId: user_list
+      description: returns a list of all users
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - user
+    post:
+      operationId: user_create
+      description: creates a new user
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - user
+    parameters: []
+  /user/{id}/:
+    get:
+      operationId: user_read
+      description: gets the user with given id
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - user
+    put:
+      operationId: user_update
+      description: modifies the user with given id
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - user
+    delete:
+      operationId: user_delete
+      description: deletes the user with the given id
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - user
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /user/{id}/project:
+    patch:
+      operationId: user_project_partial_update
+      description: |-
+        assignes project to a user
+        insert user's mentee id in the id
+        and project id in the json
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ProjectSerializer5'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ProjectSerializer5'
+      tags:
+        - user
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+definitions:
+  Mentor:
+    required:
+      - name
+    type: object
+    properties:
+      user_id:
+        title: User id
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 1000
+        minLength: 1
+  ProjectSerializer2:
+    required:
+      - name
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 1000
+        minLength: 1
+  ProjectSerializer3:
+    type: object
+    properties:
+      mentor:
+        title: Mentor
+        type: integer
+        x-nullable: true
+  ProjectSerializer4:
+    type: object
+    properties:
+      mentees:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+  User:
+    required:
+      - name
+    type: object
+    properties:
+      user_id:
+        title: User id
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 1000
+        minLength: 1
+  ProjectSerializer5:
+    type: object
+    properties:
+      project_id:
+        title: Project id
+        type: integer
+        readOnly: true
