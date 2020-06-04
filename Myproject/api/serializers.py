@@ -17,4 +17,20 @@ class ProjectSerializer1(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields= ['mentor','mentees']
+class ProjectSerializer2(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields= ['name']
+class ProjectSerializer3(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields= ['mentor']
+class ProjectSerializer4(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields= ['mentees']
 
+class ProjectSerializer5(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields= ['project_id']
