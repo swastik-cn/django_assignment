@@ -24,10 +24,10 @@ urlpatterns = [
     path('mentor/', MentorAPIView.as_view()),
     path('mentor/<int:pk>/',MentorDetails.as_view()),
     path('project/', ProjectAPIView.as_view()),
-    path('projtouser/<int:pk>/',ProjectToUserAPI.as_view()),
-    path('projecttomentor/<int:pk>/',ProjectToMentorAPI.as_view()),
-    path('usertoproject/<int:pk>/',UserToProject.as_view()),
-    path('menteesofmentor/<int:pk>/',MenteesOfMentor.as_view()),
-    path('projectofmnetor/<int:pk>/',ProjectOfMnetor.as_view()),
-    path('mnetormenteeofprject/<int:pk>/',MnetorMenteeOfPrject.as_view())
+    path('project/<int:pk>/user',ProjectToUserAPI.as_view()),
+    path('project/<int:pk>/mentor',ProjectToMentorAPI.as_view()),
+    path('user/<int:pk>/project',UserToProject.as_view()),
+    path('mentor/<int:pk>/mentees',MenteesOfMentor.as_view()),
+    path('mnetor/<int:pk>/project',ProjectOfMnetor.as_view()),
+    path('prject/<int:pk>/mentor/mentee',MnetorMenteeOfPrject.as_view())
 ]

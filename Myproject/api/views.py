@@ -119,7 +119,7 @@ class MentorDetails(APIView):
 class ProjectAPIView(APIView):
     def get(self,request):
         """
-        gets the given project id
+        gets all the projects
         """
         Projects = Project.objects.all()
         serializer = ProjectSerializer(Projects, many=True)
@@ -127,7 +127,7 @@ class ProjectAPIView(APIView):
     @swagger_auto_schema(request_body=ProjectSerializer2)
     def post(self,request):
         """
-        modifies the project with given project id
+        adds a new project
         """
         serializer = ProjectSerializer(data= request.data)
         if serializer.is_valid():

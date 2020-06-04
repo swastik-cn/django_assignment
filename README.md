@@ -38,4 +38,7 @@ python manage.py runserver
 to start the server
 
 
+got to
+http://127.0.0.1:port/swagger/ to access swagger
+
 
