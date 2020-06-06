@@ -28,6 +28,6 @@ urlpatterns = [
     path('project/<int:pk>/mentor',ProjectToMentorAPI.as_view()),
     path('user/<int:pk>/project',UserToProject.as_view()),
     path('mentor/<int:pk>/mentees',MenteesOfMentor.as_view()),
-    path('mnetor/<int:pk>/project',ProjectOfMnetor.as_view()),
-    path('prject/<int:pk>/mentor/mentees',MnetorMenteeOfPrject.as_view())
+    path('mentor/<int:pk>/project',ProjectOfMnetor.as_view()),
+    path('project/<int:pk>/mentor/mentees',MnetorMenteeOfPrject.as_view())
 ]
